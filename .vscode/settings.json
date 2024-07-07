@@ -2,6 +2,10 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "/home/ezer/ALGORITMOS/inventario-algoritmo/AbsoluteLayout.jar",
-        "GUI/lib/fontawesomefx-8.9.jar"
+        "GUI/lib/fontawesomefx-8.9.jar",
+        "GUI/lib/ikonli-core-12.3.1.jar",
+        "GUI/lib/ikonli-fontawesome5-pack-12.3.1.jar",
+        "GUI/lib/ikonli-swing-12.3.1.jar",
+        "/home/ezer/ALGORITMOS/inventario-algoritmo/mssql-jdbc-12.6.0.jre11.jar"
     ]
 }

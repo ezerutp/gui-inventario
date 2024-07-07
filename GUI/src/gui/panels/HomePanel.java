@@ -1,26 +1,37 @@
 package gui.panels;
 
+import appinventario.controllers.*;
+
 import gui.panels.Cards.Cards;
 import gui.panels.Cards.Cards.COLORES;
 import gui.panels.Cards.CardsConfig;
-import java.awt.Color;
 
 public class HomePanel extends ConfigPanel {
 
     public HomePanel() {
         initComponents();
         
+        HomeController ctr = new HomeController();
+        
+        String users = ctr.cantidadUsers() + "";
+        String producto = ctr.cantidadProductos() + "";
+        String proveedor = ctr.cantidadProveedores() + "";
+        
         //Definimos la configuracion de los cards de inicio
-        CardsConfig cc = new CardsConfig(COLORES.INFO, "usuarios", "3", "image-cards/usuarios.png");
-        CardsConfig c1 = new CardsConfig(COLORES.SUCCESS, "inventario", "100", "image-cards/inventario.png");
-        CardsConfig c2 = new CardsConfig(COLORES.WARNING, "producto", "250", "image-cards/proveedor.png");
-        CardsConfig c3 = new CardsConfig(COLORES.DANGER, "producto", "250", "image-cards/proveedor.png");
+        CardsConfig cc = new CardsConfig(COLORES.INFO, "usuarios", users, "image-cards/usuarios.png");
+        CardsConfig c1 = new CardsConfig(COLORES.SUCCESS, "producto", producto, "image-cards/inventario.png");
+        CardsConfig c2 = new CardsConfig(COLORES.WARNING, "proveedor", proveedor, "image-cards/proveedor.png");
+        CardsConfig c3 = new CardsConfig(COLORES.DANGER, "proveedor", "NULL", "image-cards/proveedor.png");
+        
+        //Setear las tablas
+        this.tablaConsumo.setModel(ctr.listaConsumos());
+        this.tablaSuministro.setModel(ctr.listaSuministros());
         
         //Creamos los cards
         Cards pan = new Cards(cc);
         Cards pan2 = new Cards(c1);
         Cards pan3 = new Cards(c2);
-        Cards pan4 = new Cards(cc);
+        Cards pan4 = new Cards(c3);
         
         //Agregamos los cards al panel
         this.jPanel1.add(pan);
@@ -45,9 +56,9 @@ public class HomePanel extends ConfigPanel {
         lblTitulo2 = new javax.swing.JLabel();
         panelTables = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tablaSuministro = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tablaConsumo = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(720, 530));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,10 +70,10 @@ public class HomePanel extends ConfigPanel {
 
         panelTitulo.setBackground(new java.awt.Color(255, 255, 255));
         panelTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        panelTitulo.setLayout(new java.awt.GridLayout());
+        panelTitulo.setLayout(new java.awt.GridLayout(1, 0));
 
         lblTitulo1.setFont(new java.awt.Font("Noto Sans", 1, 10)); // NOI18N
-        lblTitulo1.setText("  ÚLTIMAS ENTRADAS");
+        lblTitulo1.setText("  ÚLTIMOS INGRESOS");
         panelTitulo.add(lblTitulo1);
 
         lblTitulo2.setFont(new java.awt.Font("Noto Sans", 1, 10)); // NOI18N
@@ -76,9 +87,8 @@ public class HomePanel extends ConfigPanel {
         panelTables.setLayout(new javax.swing.BoxLayout(panelTables, javax.swing.BoxLayout.LINE_AXIS));
 
         jScrollPane5.setOpaque(false);
-        jScrollPane5.setPreferredSize(null);
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSuministro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -89,11 +99,12 @@ public class HomePanel extends ConfigPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        tablaSuministro.setRowHeight(34);
+        jScrollPane5.setViewportView(tablaSuministro);
 
         panelTables.add(jScrollPane5);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tablaConsumo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,7 +115,8 @@ public class HomePanel extends ConfigPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        tablaConsumo.setRowHeight(34);
+        jScrollPane4.setViewportView(tablaConsumo);
 
         panelTables.add(jScrollPane4);
 
@@ -116,12 +128,12 @@ public class HomePanel extends ConfigPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblTitulo2;
     private javax.swing.JPanel panelTables;
     private javax.swing.JPanel panelTitulo;
+    private javax.swing.JTable tablaConsumo;
+    private javax.swing.JTable tablaSuministro;
     // End of variables declaration//GEN-END:variables
 }

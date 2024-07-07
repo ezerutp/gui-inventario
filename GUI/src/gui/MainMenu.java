@@ -1,15 +1,7 @@
 package gui;
 
-import gui.button.panelButton;
-import gui.panels.EmpresaPanel;
-import gui.panels.EntradaPanel;
-import gui.panels.HomePanel;
-import gui.panels.InventarioPanel;
-import gui.panels.ProveedoresPanel;
-import gui.panels.SalidaPanel;
-import gui.panels.UsuarioPanel;
-import gui.button.ButtonFactory;
-import gui.button.ButtonConfig;
+import gui.button.*;
+import gui.panels.*;
 import java.awt.Color;
 
 import java.util.List;
