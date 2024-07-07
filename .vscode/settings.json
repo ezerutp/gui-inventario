@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/ezer/ALGORITMOS/inventario-algoritmo/AbsoluteLayout.jar",
+        "GUI/lib/fontawesomefx-8.9.jar"
+    ]
+}

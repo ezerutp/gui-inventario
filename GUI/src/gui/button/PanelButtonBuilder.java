@@ -3,6 +3,8 @@ package gui.button;
 import gui.interfaces.Subject;
 import java.awt.Color;
 import javax.swing.JPanel;
+import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
+import org.kordamp.ikonli.swing.FontIcon;
 
 public class PanelButtonBuilder {
     
@@ -10,7 +12,7 @@ public class PanelButtonBuilder {
     private Color hoverColor = new Color(0, 128, 0);
     private int xPoint = 0;
     private int yPoint = 0;
-    private String iconPath = "24x24/inventario_w.png";
+    private FontIcon icon = FontIcon.of(FontAwesomeSolid.USERS, 22, Color.white);
     private String labelText = "panelButton";
     private Color labelColor = Color.WHITE;
     private int labelFontSize = 14;
@@ -43,8 +45,8 @@ public class PanelButtonBuilder {
         return this;
     }
 
-    public PanelButtonBuilder setIconPath(String iconPath) {
-        this.iconPath = iconPath;
+    public PanelButtonBuilder setIcon(FontIcon icon) {
+        this.icon = icon;
         return this;
     }
 
@@ -85,7 +87,7 @@ public class PanelButtonBuilder {
 
     public panelButton build() {
         panelButton panel = new panelButton(hoverColor, xPoint, yPoint, subject, panelcontenido);
-        panel.setIcon(iconPath);
+        panel.setIcon(icon);
         panel.setSize(width, height);
         panel.setActive(isActive);
         panel.setLabelProperties(labelText, labelColor, labelFontSize);

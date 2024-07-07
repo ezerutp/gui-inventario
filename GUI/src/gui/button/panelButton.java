@@ -1,12 +1,14 @@
 package gui.button;
 
+import org.kordamp.ikonli.swing.FontIcon;
+
 import gui.interfaces.Subject;
 import gui.interfaces.Observer;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
+
 import javax.swing.JPanel;
 
 public class panelButton extends javax.swing.JPanel implements Observer {
@@ -73,8 +75,8 @@ public class panelButton extends javax.swing.JPanel implements Observer {
         });
     }
     
-    public void setIcon(String iconPath) {
-        this.iconButton.setIcon(new ImageIcon(getClass().getResource("/resources/images/" + iconPath)));
+    public void setIcon(FontIcon icon) {
+        this.iconButton.setIcon(icon);
     }
     
     public void setLabelProperties(String text, Color color, int fontSize) {
@@ -95,8 +97,6 @@ public class panelButton extends javax.swing.JPanel implements Observer {
         setMaximumSize(new java.awt.Dimension(220, 40));
         setPreferredSize(new java.awt.Dimension(220, 40));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        iconButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/24x24/inventario_w.png"))); // NOI18N
         add(iconButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 4, 32, 32));
 
         lblButton.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N

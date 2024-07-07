@@ -1,9 +1,32 @@
 package gui.panels;
 
+import gui.panels.Cards.Cards;
+import gui.panels.Cards.Cards.COLORES;
+import gui.panels.Cards.CardsConfig;
+import java.awt.Color;
+
 public class HomePanel extends ConfigPanel {
 
     public HomePanel() {
         initComponents();
+        
+        //Definimos la configuracion de los cards de inicio
+        CardsConfig cc = new CardsConfig(COLORES.INFO, "usuarios", "3", "image-cards/usuarios.png");
+        CardsConfig c1 = new CardsConfig(COLORES.SUCCESS, "inventario", "100", "image-cards/inventario.png");
+        CardsConfig c2 = new CardsConfig(COLORES.WARNING, "producto", "250", "image-cards/proveedor.png");
+        CardsConfig c3 = new CardsConfig(COLORES.DANGER, "producto", "250", "image-cards/proveedor.png");
+        
+        //Creamos los cards
+        Cards pan = new Cards(cc);
+        Cards pan2 = new Cards(c1);
+        Cards pan3 = new Cards(c2);
+        Cards pan4 = new Cards(cc);
+        
+        //Agregamos los cards al panel
+        this.jPanel1.add(pan);
+        this.jPanel1.add(pan2);
+        this.jPanel1.add(pan3);
+        this.jPanel1.add(pan4);
     }
 
     /**
@@ -16,10 +39,15 @@ public class HomePanel extends ConfigPanel {
     private void initComponents() {
 
         lblTitulo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        panelTitulo = new javax.swing.JPanel();
+        lblTitulo1 = new javax.swing.JLabel();
+        lblTitulo2 = new javax.swing.JLabel();
+        panelTables = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(720, 530));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -27,14 +55,30 @@ public class HomePanel extends ConfigPanel {
         lblTitulo.setFont(new java.awt.Font("Noto Sans", 1, 13)); // NOI18N
         lblTitulo.setText("Inicio");
         add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 640, 120));
 
-        jButton1.setText("jButton1");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 110, 120));
+        panelTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        panelTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        panelTitulo.setLayout(new java.awt.GridLayout());
 
-        jButton2.setText("jButton1");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 110, 120));
+        lblTitulo1.setFont(new java.awt.Font("Noto Sans", 1, 10)); // NOI18N
+        lblTitulo1.setText("  ÚLTIMAS ENTRADAS");
+        panelTitulo.add(lblTitulo1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        lblTitulo2.setFont(new java.awt.Font("Noto Sans", 1, 10)); // NOI18N
+        lblTitulo2.setText("  ÚLTIMAS SALIDAS");
+        panelTitulo.add(lblTitulo2);
+
+        add(panelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 264, 640, 30));
+
+        panelTables.setBackground(new java.awt.Color(255, 255, 255));
+        panelTables.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        panelTables.setLayout(new javax.swing.BoxLayout(panelTables, javax.swing.BoxLayout.LINE_AXIS));
+
+        jScrollPane5.setOpaque(false);
+        jScrollPane5.setPreferredSize(null);
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -45,17 +89,39 @@ public class HomePanel extends ConfigPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane5.setViewportView(jTable5);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, 210));
+        panelTables.add(jScrollPane5);
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable4);
+
+        panelTables.add(jScrollPane4);
+
+        add(panelTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 640, 200));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JLabel lblTitulo2;
+    private javax.swing.JPanel panelTables;
+    private javax.swing.JPanel panelTitulo;
     // End of variables declaration//GEN-END:variables
 }

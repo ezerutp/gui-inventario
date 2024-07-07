@@ -1,9 +1,24 @@
 package gui;
 
 import gui.button.panelButton;
+import gui.panels.EmpresaPanel;
+import gui.panels.EntradaPanel;
+import gui.panels.HomePanel;
+import gui.panels.InventarioPanel;
+import gui.panels.ProveedoresPanel;
+import gui.panels.SalidaPanel;
+import gui.panels.UsuarioPanel;
 import gui.button.ButtonFactory;
+import gui.button.ButtonConfig;
+import java.awt.Color;
+
+import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
+import org.kordamp.ikonli.swing.FontIcon;
+
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 public class MainMenu extends BaseMover {
@@ -25,11 +40,33 @@ public class MainMenu extends BaseMover {
         //Observador
         PanelManager panelManager = new PanelManager();
 
-        //Botones
-        for (int i = 1; i < 9; i++) {
-            panelButton comp = ButtonFactory.createButton(i, panelManager, this.contentPanel);
+        //Lista de botones
+        List<ButtonConfig> lista = new ArrayList<>();
+        //Definimos nuestros botones:
+        ButtonConfig home = new ButtonConfig("Home", FontIcon.of(FontAwesomeSolid.HOME, 22, Color.white), 0, 0, true, new HomePanel());
+        ButtonConfig user = new ButtonConfig("Usuarios", FontIcon.of(FontAwesomeSolid.USERS, 22, Color.white), 0, 0, false, new UsuarioPanel());
+        ButtonConfig prod = new ButtonConfig("Productos", FontIcon.of(FontAwesomeSolid.SHOPPING_BASKET, 22, Color.white), 0, 0, false, new EmpresaPanel());
+        ButtonConfig prov = new ButtonConfig("Proveedores", FontIcon.of(FontAwesomeSolid.CART_PLUS, 22, Color.white), 0, 0, false, new ProveedoresPanel());
+        ButtonConfig inv = new ButtonConfig("Inventario", FontIcon.of(FontAwesomeSolid.WAREHOUSE, 20, Color.white), 0, 0, false, new InventarioPanel());
+        ButtonConfig sum = new ButtonConfig("Suministros", FontIcon.of(FontAwesomeSolid.INBOX, 22, Color.white), 0, 0, false, new EntradaPanel());
+        ButtonConfig coms = new ButtonConfig("Comsumos", FontIcon.of(FontAwesomeSolid.CART_ARROW_DOWN, 22, Color.white), 0, 0, false, new SalidaPanel());
+        //Agregamos los botones a la lista
+        lista.add(home);
+        lista.add(user);
+        lista.add(prod);
+        lista.add(prov);
+        lista.add(inv);
+        lista.add(sum);
+        lista.add(coms);
+        
+        int starY = 200;
+
+        for (ButtonConfig bc : lista){
+            bc.setYPoint(starY);
+            panelButton comp = ButtonFactory.createButton(bc, panelManager, this.contentPanel);
             appBarPanel.add(comp, new AbsoluteConstraints(comp.getX(), comp.getY(), -1, -1));
             comp.setVisible(true);
+            starY += 40;
         }
     }
     
@@ -50,6 +87,7 @@ public class MainMenu extends BaseMover {
         mainPanel = new javax.swing.JPanel();
         appBarPanel = new javax.swing.JPanel();
         lblClose = new javax.swing.JLabel();
+        lblIconProgram = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,6 +99,10 @@ public class MainMenu extends BaseMover {
 
         lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/24x24/icons.png"))); // NOI18N
         appBarPanel.add(lblClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, -1));
+
+        lblIconProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/images/iso_170x58.png"))); // NOI18N
+        lblIconProgram.setText("jLabel1");
+        appBarPanel.add(lblIconProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 70, 170, 88));
 
         mainPanel.add(appBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 540));
 
@@ -130,6 +172,7 @@ public class MainMenu extends BaseMover {
     private javax.swing.JPanel appBarPanel;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel lblIconProgram;
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 }
