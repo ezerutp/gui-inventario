@@ -8,31 +8,39 @@ import gui.panels.Cards.CardsConfig;
 
 public class HomePanel extends ConfigPanel {
 
+    HomeController ctr;
+    
     public HomePanel() {
         initComponents();
         
-        HomeController ctr = new HomeController();
-        
-        String users = ctr.cantidadUsers() + "";
-        String producto = ctr.cantidadProductos() + "";
-        String proveedor = ctr.cantidadProveedores() + "";
-        
-        //Definimos la configuracion de los cards de inicio
-        CardsConfig cc = new CardsConfig(COLORES.INFO, "usuarios", users, "image-cards/usuarios.png");
-        CardsConfig c1 = new CardsConfig(COLORES.SUCCESS, "producto", producto, "image-cards/inventario.png");
-        CardsConfig c2 = new CardsConfig(COLORES.WARNING, "proveedor", proveedor, "image-cards/proveedor.png");
-        CardsConfig c3 = new CardsConfig(COLORES.DANGER, "proveedor", "NULL", "image-cards/proveedor.png");
+        this.ctr = new HomeController();
+        crearCards();
         
         //Setear las tablas
         this.tablaConsumo.setModel(ctr.listaConsumos());
         this.tablaSuministro.setModel(ctr.listaSuministros());
+       
+    }
+    
+    private void crearCards() {
         
+        //Obtenemos los datos de la base de datos
+        String users = String.valueOf(ctr.cantidadUsers());
+        String producto = String.valueOf(ctr.cantidadProductos());
+        String proveedor = String.valueOf(ctr.cantidadProveedores());
+
+        //Definimos la configuracion de los cards de inicio
+        CardsConfig cc = new CardsConfig(COLORES.INFO, "usuarios", users, "image-cards/usuarios.png");
+        CardsConfig c1 = new CardsConfig(COLORES.SUCCESS, "producto", producto, "image-cards/inventario.png");
+        CardsConfig c2 = new CardsConfig(COLORES.WARNING, "proveedor", proveedor, "image-cards/proveedor.png");
+        CardsConfig c3 = new CardsConfig(COLORES.DANGER, "stock bajo", "5", "image-cards/inventario.png");
+
         //Creamos los cards
         Cards pan = new Cards(cc);
         Cards pan2 = new Cards(c1);
         Cards pan3 = new Cards(c2);
         Cards pan4 = new Cards(c3);
-        
+
         //Agregamos los cards al panel
         this.jPanel1.add(pan);
         this.jPanel1.add(pan2);
@@ -73,11 +81,13 @@ public class HomePanel extends ConfigPanel {
         panelTitulo.setLayout(new java.awt.GridLayout(1, 0));
 
         lblTitulo1.setFont(new java.awt.Font("Noto Sans", 1, 10)); // NOI18N
-        lblTitulo1.setText("  ÚLTIMOS INGRESOS");
+        lblTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo1.setText("ÚLTIMOS INGRESOS");
         panelTitulo.add(lblTitulo1);
 
         lblTitulo2.setFont(new java.awt.Font("Noto Sans", 1, 10)); // NOI18N
-        lblTitulo2.setText("  ÚLTIMAS SALIDAS");
+        lblTitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo2.setText("ÚLTIMAS SALIDAS");
         panelTitulo.add(lblTitulo2);
 
         add(panelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 264, 640, 30));
