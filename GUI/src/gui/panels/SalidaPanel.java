@@ -1,12 +1,24 @@
 package gui.panels;
 
+import appinventario.controllers.ConsumoController;
+import appinventario.models.Consumo;
+import appinventario.tablas.ConsumoTableModel;
+import java.util.List;
+
 public class SalidaPanel extends ConfigPanel {
 
-    /**
-     * Creates new form SalidaPanel
-     */
+    private ConsumoController controlador;
+    
     public SalidaPanel() {
         initComponents();
+        this.controlador = new ConsumoController();
+        llenarTabla();
+    }
+    
+       private void llenarTabla(){
+        List<Consumo> usuarios = controlador.obtenerTodosConsumos();
+        ConsumoTableModel modelo = new ConsumoTableModel(usuarios);
+        this.tablaConsumo.setModel(modelo);
     }
 
     /**
@@ -19,16 +31,44 @@ public class SalidaPanel extends ConfigPanel {
     private void initComponents() {
 
         lblTitulo = new javax.swing.JLabel();
+        pnlLista = new javax.swing.JPanel();
+        jScrollJava = new javax.swing.JScrollPane();
+        tablaConsumo = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Noto Sans", 1, 13)); // NOI18N
         lblTitulo.setText("Consumo");
         add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, -1, -1));
+
+        pnlLista.setLayout(new javax.swing.BoxLayout(pnlLista, javax.swing.BoxLayout.LINE_AXIS));
+
+        jScrollJava.setOpaque(false);
+
+        tablaConsumo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaConsumo.setRowHeight(34);
+        jScrollJava.setViewportView(tablaConsumo);
+
+        pnlLista.add(jScrollJava);
+
+        add(pnlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 640, 320));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollJava;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlLista;
+    private javax.swing.JTable tablaConsumo;
     // End of variables declaration//GEN-END:variables
 }

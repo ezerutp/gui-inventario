@@ -1,10 +1,10 @@
 # Directorio de compilación
-/inventario/GUI/dist/
-/inventario/GUI/build/
+GUI/dist/
+GUI/build/
 
 # Directorios de configuración
-/inventario/GUI/nbproject/private/
-/inventario/GUI/nbproject/
+GUI/nbproject/private/
+GUI/nbproject/
 out/
 gen/
 
@@ -58,4 +58,4 @@ build/
 # Archivos de NetBeans
 nb-configuration.xml
 /inventario/NewGUI/nbproject/private/
-/inventario/GUI/nbproject/private/
+/GUI/nbproject/private/

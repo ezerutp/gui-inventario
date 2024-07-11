@@ -1,27 +1,25 @@
 package gui.panels;
 
-import appinventario.controllers.AdminController;
-import appinventario.models.Usuario;
-import appinventario.tablas.UsuarioTableModel;
+import appinventario.controllers.ProductoController;
+import appinventario.models.Producto;
+import appinventario.tablas.ProductoTableModel;
 import java.util.List;
 
-public class UsuarioPanel extends ConfigPanel {
+public class ProductoPanel extends ConfigPanel {
 
-    private AdminController controlador;
+    private ProductoController controlador;
     
-    public UsuarioPanel() {
+    public ProductoPanel() {
         initComponents();
-        this.controlador = new AdminController();
+        this.controlador = new ProductoController();
         llenarTabla();
-        
-    }
-    
-    private void llenarTabla(){
-        List<Usuario> usuarios = controlador.obtenerTodosUsuarios();
-        UsuarioTableModel modelo = new UsuarioTableModel(usuarios);
-        this.tablaUsuarios.setModel(modelo);
     }
 
+    private void llenarTabla(){
+        List<Producto> usuarios = controlador.obtenerTodosProductos();
+        ProductoTableModel modelo = new ProductoTableModel(usuarios);
+        this.tablaProducto.setModel(modelo);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,19 +32,19 @@ public class UsuarioPanel extends ConfigPanel {
         lblTitulo = new javax.swing.JLabel();
         pnlLista = new javax.swing.JPanel();
         jScrollJava = new javax.swing.JScrollPane();
-        tablaUsuarios = new javax.swing.JTable();
+        tablaProducto = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Noto Sans", 1, 13)); // NOI18N
-        lblTitulo.setText("Usuarios");
+        lblTitulo.setText("Productos");
         add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, -1, -1));
 
         pnlLista.setLayout(new javax.swing.BoxLayout(pnlLista, javax.swing.BoxLayout.LINE_AXIS));
 
         jScrollJava.setOpaque(false);
 
-        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -57,8 +55,8 @@ public class UsuarioPanel extends ConfigPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaUsuarios.setRowHeight(34);
-        jScrollJava.setViewportView(tablaUsuarios);
+        tablaProducto.setRowHeight(34);
+        jScrollJava.setViewportView(tablaProducto);
 
         pnlLista.add(jScrollJava);
 
@@ -70,6 +68,6 @@ public class UsuarioPanel extends ConfigPanel {
     private javax.swing.JScrollPane jScrollJava;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlLista;
-    private javax.swing.JTable tablaUsuarios;
+    private javax.swing.JTable tablaProducto;
     // End of variables declaration//GEN-END:variables
 }

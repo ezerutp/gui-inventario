@@ -1,12 +1,24 @@
 package gui.panels;
 
+import appinventario.controllers.ProveedorController;
+import appinventario.models.Proveedor;
+import appinventario.tablas.ProveedorTableModel;
+import java.util.List;
+
 public class ProveedoresPanel extends ConfigPanel {
 
-    /**
-     * Creates new form ProveedoresPanel
-     */
+    private ProveedorController controlador;
+    
     public ProveedoresPanel() {
         initComponents();
+        this.controlador = new ProveedorController();
+        llenarTabla();
+    }
+    
+    private void llenarTabla() {
+        List<Proveedor> usuarios = controlador.obtenerTodosProveedores();
+        ProveedorTableModel modelo = new ProveedorTableModel(usuarios);
+        this.tablaProveedor.setModel(modelo);
     }
 
     /**
@@ -19,16 +31,44 @@ public class ProveedoresPanel extends ConfigPanel {
     private void initComponents() {
 
         lblTitulo = new javax.swing.JLabel();
+        pnlLista = new javax.swing.JPanel();
+        jScrollJava = new javax.swing.JScrollPane();
+        tablaProveedor = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Noto Sans", 1, 13)); // NOI18N
         lblTitulo.setText("Proveedores");
         add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, -1, -1));
+
+        pnlLista.setLayout(new javax.swing.BoxLayout(pnlLista, javax.swing.BoxLayout.LINE_AXIS));
+
+        jScrollJava.setOpaque(false);
+
+        tablaProveedor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaProveedor.setRowHeight(34);
+        jScrollJava.setViewportView(tablaProveedor);
+
+        pnlLista.add(jScrollJava);
+
+        add(pnlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 640, 320));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollJava;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlLista;
+    private javax.swing.JTable tablaProveedor;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,52 +13,86 @@ import org.kordamp.ikonli.swing.FontIcon;
 
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingWorker;
+import javax.swing.JProgressBar;
+
 public class MainMenu extends BaseMover {
+
+    private LoadingPage loadingFrame;
 
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
-        
-        //Expresion Lambda
-        this.lblClose.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                cerrarApp();
+        showLoadingFrame();
+
+        new DataLoader().execute();
+    }
+
+    private void showLoadingFrame() {
+        loadingFrame = new LoadingPage();
+        loadingFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        loadingFrame.toFront();
+        loadingFrame.setVisible(true);
+    }
+
+    private void hideLoadingFrame() {
+        loadingFrame.dispose();
+        this.setVisible(true);
+    }
+
+    private class DataLoader extends SwingWorker<Void, Void> {
+        @Override
+        protected Void doInBackground() throws Exception {
+            // Expresion Lambda
+            lblClose.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    cerrarApp();
+                }
+            });
+            
+            //Observador
+            PanelManager panelManager = new PanelManager();
+
+            //Lista de botones
+            List<ButtonConfig> lista = new ArrayList<>();
+            //Definimos nuestros botones:
+            ButtonConfig home = new ButtonConfig("Home", FontIcon.of(FontAwesomeSolid.HOME, 22, Color.white), 0, 0, true, new HomePanel());
+            ButtonConfig user = new ButtonConfig("Usuarios", FontIcon.of(FontAwesomeSolid.USERS, 22, Color.white), 0, 0, false, new UsuarioPanel());
+            ButtonConfig prod = new ButtonConfig("Productos", FontIcon.of(FontAwesomeSolid.SHOPPING_BASKET, 22, Color.white), 0, 0, false, new ProductoPanel());
+            ButtonConfig prov = new ButtonConfig("Proveedores", FontIcon.of(FontAwesomeSolid.CART_PLUS, 22, Color.white), 0, 0, false, new ProveedoresPanel());
+            ButtonConfig inv = new ButtonConfig("Inventario", FontIcon.of(FontAwesomeSolid.WAREHOUSE, 20, Color.white), 0, 0, false, new InventarioPanel());
+            ButtonConfig sum = new ButtonConfig("Suministros", FontIcon.of(FontAwesomeSolid.INBOX, 22, Color.white), 0, 0, false, new EntradaPanel());
+            ButtonConfig coms = new ButtonConfig("Comsumos", FontIcon.of(FontAwesomeSolid.CART_ARROW_DOWN, 22, Color.white), 0, 0, false, new SalidaPanel());
+            //Agregamos los botones a la lista
+            lista.add(home);
+            lista.add(user);
+            lista.add(prod);
+            lista.add(prov);
+            lista.add(inv);
+            lista.add(sum);
+            lista.add(coms);
+            
+            int starY = 200;
+
+            for (ButtonConfig bc : lista){
+                bc.setYPoint(starY);
+                panelButton comp = ButtonFactory.createButton(bc, panelManager, contentPanel);
+                appBarPanel.add(comp, new AbsoluteConstraints(comp.getX(), comp.getY(), -1, -1));
+                comp.setVisible(true);
+                starY += 40;
             }
-        });
-        
-        //Observador
-        PanelManager panelManager = new PanelManager();
+            
+            return null;
+        }
 
-        //Lista de botones
-        List<ButtonConfig> lista = new ArrayList<>();
-        //Definimos nuestros botones:
-        ButtonConfig home = new ButtonConfig("Home", FontIcon.of(FontAwesomeSolid.HOME, 22, Color.white), 0, 0, true, new HomePanel());
-        ButtonConfig user = new ButtonConfig("Usuarios", FontIcon.of(FontAwesomeSolid.USERS, 22, Color.white), 0, 0, false, new UsuarioPanel());
-        ButtonConfig prod = new ButtonConfig("Productos", FontIcon.of(FontAwesomeSolid.SHOPPING_BASKET, 22, Color.white), 0, 0, false, new EmpresaPanel());
-        ButtonConfig prov = new ButtonConfig("Proveedores", FontIcon.of(FontAwesomeSolid.CART_PLUS, 22, Color.white), 0, 0, false, new ProveedoresPanel());
-        ButtonConfig inv = new ButtonConfig("Inventario", FontIcon.of(FontAwesomeSolid.WAREHOUSE, 20, Color.white), 0, 0, false, new InventarioPanel());
-        ButtonConfig sum = new ButtonConfig("Suministros", FontIcon.of(FontAwesomeSolid.INBOX, 22, Color.white), 0, 0, false, new EntradaPanel());
-        ButtonConfig coms = new ButtonConfig("Comsumos", FontIcon.of(FontAwesomeSolid.CART_ARROW_DOWN, 22, Color.white), 0, 0, false, new SalidaPanel());
-        //Agregamos los botones a la lista
-        lista.add(home);
-        lista.add(user);
-        lista.add(prod);
-        lista.add(prov);
-        lista.add(inv);
-        lista.add(sum);
-        lista.add(coms);
-        
-        int starY = 200;
-
-        for (ButtonConfig bc : lista){
-            bc.setYPoint(starY);
-            panelButton comp = ButtonFactory.createButton(bc, panelManager, this.contentPanel);
-            appBarPanel.add(comp, new AbsoluteConstraints(comp.getX(), comp.getY(), -1, -1));
-            comp.setVisible(true);
-            starY += 40;
+        @Override
+        protected void done() {
+            hideLoadingFrame();
         }
     }
     
@@ -154,7 +188,7 @@ public class MainMenu extends BaseMover {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu().setVisible(true);
+                new MainMenu().setVisible(false);
             }
         });
 
