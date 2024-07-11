@@ -3,20 +3,15 @@ package gui;
 import gui.button.*;
 import gui.panels.*;
 import java.awt.Color;
-
 import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.swing.FontIcon;
-
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.SwingWorker;
-import javax.swing.JProgressBar;
 
 public class MainMenu extends BaseMover {
 
