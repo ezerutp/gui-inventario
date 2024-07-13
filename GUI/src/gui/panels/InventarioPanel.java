@@ -1,9 +1,23 @@
 package gui.panels;
 
-public class InventarioPanel extends ConfigPanel {
+import appinventario.controllers.InventarioController;
+import appinventario.models.Inventario;
+import appinventario.tablas.InventarioTableModel;
+import java.util.List;
 
+public class InventarioPanel extends ConfigPanel {
+    private InventarioController controlador;
     public InventarioPanel() {
+        
         initComponents();
+        this.controlador = new InventarioController();
+        llenartabla();
+    }
+    
+    private void llenartabla(){
+        List<Inventario> lista = this.controlador.obtenerTodosInventarios();
+        InventarioTableModel modelo = new InventarioTableModel(lista);
+        this.tablaInventario.setModel(modelo);
     }
 
     /**
@@ -16,16 +30,44 @@ public class InventarioPanel extends ConfigPanel {
     private void initComponents() {
 
         lblTitulo = new javax.swing.JLabel();
+        pnlLista = new javax.swing.JPanel();
+        jScrollJava = new javax.swing.JScrollPane();
+        tablaInventario = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Noto Sans", 1, 13)); // NOI18N
         lblTitulo.setText("Inventario");
         add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, -1, -1));
+
+        pnlLista.setLayout(new javax.swing.BoxLayout(pnlLista, javax.swing.BoxLayout.LINE_AXIS));
+
+        jScrollJava.setOpaque(false);
+
+        tablaInventario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaInventario.setRowHeight(34);
+        jScrollJava.setViewportView(tablaInventario);
+
+        pnlLista.add(jScrollJava);
+
+        add(pnlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 640, 320));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollJava;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlLista;
+    private javax.swing.JTable tablaInventario;
     // End of variables declaration//GEN-END:variables
 }
