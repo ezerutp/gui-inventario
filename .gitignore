@@ -5,8 +5,8 @@ GUI/build/
 # Directorios de configuración
 GUI/nbproject/private/
 GUI/nbproject/
-out/
-gen/
+GUI/nbproject/private/private.properties
+GUI/nbproject/project.properties
 
 # Archivos generados por el sistema
 *.class
