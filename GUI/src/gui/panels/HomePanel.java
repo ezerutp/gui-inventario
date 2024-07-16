@@ -25,15 +25,16 @@ public class HomePanel extends ConfigPanel {
     private void crearCards() {
         
         //Obtenemos los datos de la base de datos
-        String users = String.valueOf(ctr.cantidadUsers());
-        String producto = String.valueOf(ctr.cantidadProductos());
-        String proveedor = String.valueOf(ctr.cantidadProveedores());
-
+        int users = ctr.cantidadUsers();
+        int producto = ctr.cantidadProductos();
+        int proveedor = ctr.cantidadProveedores();
+        int stockbajo = ctr.cantidadInventario();
+        
         //Definimos la configuracion de los cards de inicio
         CardsConfig cc = new CardsConfig(COLORES.INFO, "usuarios", users, "image-cards/usuarios.png");
         CardsConfig c1 = new CardsConfig(COLORES.SUCCESS, "producto", producto, "image-cards/inventario.png");
         CardsConfig c2 = new CardsConfig(COLORES.WARNING, "proveedor", proveedor, "image-cards/proveedor.png");
-        CardsConfig c3 = new CardsConfig(COLORES.DANGER, "stock bajo", "5", "image-cards/inventario.png");
+        CardsConfig c3 = new CardsConfig(COLORES.DANGER, "inventario", stockbajo, "image-cards/inventario.png");
 
         //Creamos los cards
         Cards pan = new Cards(cc);

@@ -14,7 +14,7 @@ public class Cards extends javax.swing.JPanel {
 
     public Cards(CardsConfig cc) {
         initComponents();
-        this.txtMainLabel.setText(cc.getLabel());
+        this.txtMainLabel.setText(cc.getCant() + "");
         this.lblTitulo.setText(cc.getTitulo().toUpperCase());
         this.backgroundColor = paintcolor(cc.getBg());
         setIcon(cc.getIconPath());

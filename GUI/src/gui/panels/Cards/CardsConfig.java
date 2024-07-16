@@ -7,13 +7,13 @@ public class CardsConfig {
     
     private COLORES bg;
     private String titulo;
-    private String label;
+    private int cant;
     private String iconPath;
 
-    public CardsConfig(COLORES bg, String titulo, String label, String iconPath) {
+    public CardsConfig(COLORES bg, String titulo, int cant, String iconPath) {
         this.bg = bg;
         this.titulo = titulo;
-        this.label = label;
+        this.cant = cant;
         this.iconPath = iconPath;
     }
 
@@ -25,8 +25,8 @@ public class CardsConfig {
         return titulo;
     }
 
-    public String getLabel() {
-        return label;
+    public int getCant() {
+        return cant;
     }
 
     public String getIconPath() {
@@ -41,8 +41,8 @@ public class CardsConfig {
         this.titulo = titulo;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setCant(int cant) {
+        this.cant = cant;
     }
 
     public void setIconPath(String iconPath) {
