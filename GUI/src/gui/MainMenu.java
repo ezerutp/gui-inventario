@@ -25,6 +25,14 @@ public class MainMenu extends BaseMover {
         showLoadingFrame();
 
         new DataLoader().execute();
+        
+        // Expresion Lambda
+        lblClose.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cerrarApp();
+            }
+        });
     }
 
     private void showLoadingFrame() {
@@ -42,13 +50,6 @@ public class MainMenu extends BaseMover {
     private class DataLoader extends SwingWorker<Void, Void> {
         @Override
         protected Void doInBackground() throws Exception {
-            // Expresion Lambda
-            lblClose.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    cerrarApp();
-                }
-            });
             
             //Observador
             PanelManager panelManager = new PanelManager();
@@ -82,6 +83,8 @@ public class MainMenu extends BaseMover {
                 starY += 40;
             }
             
+            //Icono de notificacion!
+            lblNotificaciones.setIcon(FontIcon.of(FontAwesomeSolid.BELL, 16, Color.gray));
             return null;
         }
 
@@ -110,6 +113,10 @@ public class MainMenu extends BaseMover {
         lblClose = new javax.swing.JLabel();
         lblIconProgram = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
+        tituloPanel = new javax.swing.JPanel();
+        lblBienvenido = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        lblNotificaciones = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,6 +135,21 @@ public class MainMenu extends BaseMover {
         mainPanel.add(appBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 540));
 
         contentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tituloPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblBienvenido.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        lblBienvenido.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblBienvenido.setText("Bienvenido EZER ISAI!");
+        lblBienvenido.setToolTipText("");
+        tituloPanel.add(lblBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 12, 290, -1));
+        tituloPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 10));
+
+        lblNotificaciones.setToolTipText("");
+        tituloPanel.add(lblNotificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, 20));
+
+        contentPanel.add(tituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 640, 40));
+
         mainPanel.add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 720, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,8 +214,12 @@ public class MainMenu extends BaseMover {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel appBarPanel;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblIconProgram;
+    private javax.swing.JLabel lblNotificaciones;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel tituloPanel;
     // End of variables declaration//GEN-END:variables
 }

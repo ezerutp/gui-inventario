@@ -34,6 +34,10 @@ public class SalidaPanel extends ConfigPanel {
         pnlLista = new javax.swing.JPanel();
         jScrollJava = new javax.swing.JScrollPane();
         tablaConsumo = new javax.swing.JTable();
+        pnlBotones = new javax.swing.JPanel();
+        btnAgregar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        bntEliminar = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -62,12 +66,35 @@ public class SalidaPanel extends ConfigPanel {
         pnlLista.add(jScrollJava);
 
         add(pnlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 640, 320));
+
+        pnlBotones.setLayout(new java.awt.GridLayout());
+
+        btnAgregar.setBackground(new java.awt.Color(40, 167, 69));
+        btnAgregar.setText("Agregar");
+        pnlBotones.add(btnAgregar);
+
+        btnModificar.setBackground(new java.awt.Color(255, 193, 7));
+        btnModificar.setText("Modificar");
+        btnModificar.setFocusPainted(false);
+        pnlBotones.add(btnModificar);
+
+        bntEliminar.setBackground(new java.awt.Color(220, 53, 69));
+        bntEliminar.setText("Eliminar");
+        bntEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        bntEliminar.setFocusPainted(false);
+        pnlBotones.add(bntEliminar);
+
+        add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 410, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntEliminar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JScrollPane jScrollJava;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlLista;
     private javax.swing.JTable tablaConsumo;
     // End of variables declaration//GEN-END:variables
