@@ -84,7 +84,8 @@ public class MainMenu extends BaseMover {
             }
             
             //Icono de notificacion!
-            lblNotificaciones.setIcon(FontIcon.of(FontAwesomeSolid.BELL, 16, Color.gray));
+            //lblNotificaciones.setIcon(FontIcon.of(FontAwesomeSolid.BELL, 16, Color.gray));
+            lblBienvenido.setIcon(FontIcon.of(FontAwesomeSolid.USER, 16, Color.GRAY));
             return null;
         }
 
@@ -116,7 +117,6 @@ public class MainMenu extends BaseMover {
         tituloPanel = new javax.swing.JPanel();
         lblBienvenido = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        lblNotificaciones = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,13 +140,10 @@ public class MainMenu extends BaseMover {
 
         lblBienvenido.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
         lblBienvenido.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblBienvenido.setText("Bienvenido EZER ISAI!");
+        lblBienvenido.setText("EZER ISAI VIDARTE TICLIAHUANCA");
         lblBienvenido.setToolTipText("");
-        tituloPanel.add(lblBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 12, 290, -1));
+        tituloPanel.add(lblBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 8, 330, -1));
         tituloPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 10));
-
-        lblNotificaciones.setToolTipText("");
-        tituloPanel.add(lblNotificaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 20, 20));
 
         contentPanel.add(tituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 640, 40));
 
@@ -218,7 +215,6 @@ public class MainMenu extends BaseMover {
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblIconProgram;
-    private javax.swing.JLabel lblNotificaciones;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel tituloPanel;
     // End of variables declaration//GEN-END:variables

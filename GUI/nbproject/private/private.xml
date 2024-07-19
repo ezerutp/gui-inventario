@@ -3,13 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/VIDARTE/repos/gui-inventario/GUI/src/gui/panels/UsuarioPanel.java</file>
-            <file>file:/C:/Users/VIDARTE/repos/gui-inventario/GUI/src/gui/panels/EntradaPanel.java</file>
-            <file>file:/C:/Users/VIDARTE/repos/gui-inventario/GUI/src/gui/panels/ProductoPanel.java</file>
-            <file>file:/C:/Users/VIDARTE/repos/gui-inventario/GUI/src/gui/panels/ProveedoresPanel.java</file>
-            <file>file:/C:/Users/VIDARTE/repos/gui-inventario/GUI/src/gui/panels/DialogoForm.java</file>
-            <file>file:/C:/Users/VIDARTE/repos/gui-inventario/GUI/src/gui/panels/InventarioPanel.java</file>
-            <file>file:/C:/Users/VIDARTE/repos/gui-inventario/GUI/src/gui/panels/SalidaPanel.java</file>
+            <file>file:/C:/Users/VIDARTE/repos/gui-inventario/GUI/src/gui/LoadingPage.java</file>
             <file>file:/C:/Users/VIDARTE/repos/gui-inventario/GUI/src/gui/MainMenu.java</file>
         </group>
     </open-files>

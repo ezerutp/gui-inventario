@@ -17,8 +17,8 @@ public class HomePanel extends ConfigPanel {
         crearCards();
         
         //Setear las tablas
-        this.tablaConsumo.setModel(ctr.listaConsumos());
-        this.tablaSuministro.setModel(ctr.listaSuministros());
+        this.tablaConsumo.setModel(ctr.listaConsumos(7));
+        this.tablaSuministro.setModel(ctr.listaSuministros(7));
        
     }
     
@@ -75,7 +75,7 @@ public class HomePanel extends ConfigPanel {
         lblTitulo.setFont(new java.awt.Font("Noto Sans", 1, 13)); // NOI18N
         lblTitulo.setText("Inicio");
         add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, -1, -1));
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 640, 120));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 640, 120));
 
         panelTitulo.setBackground(new java.awt.Color(255, 255, 255));
         panelTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -91,7 +91,7 @@ public class HomePanel extends ConfigPanel {
         lblTitulo2.setText("ÚLTIMAS SALIDAS");
         panelTitulo.add(lblTitulo2);
 
-        add(panelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 264, 640, 30));
+        add(panelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 194, 640, 30));
 
         panelTables.setBackground(new java.awt.Color(255, 255, 255));
         panelTables.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -131,7 +131,7 @@ public class HomePanel extends ConfigPanel {
 
         panelTables.add(jScrollPane4);
 
-        add(panelTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 640, 200));
+        add(panelTables, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 640, 270));
     }// </editor-fold>//GEN-END:initComponents
 
 
