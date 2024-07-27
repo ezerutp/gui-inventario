@@ -145,7 +145,7 @@ public class MainMenu extends BaseMover {
         tituloPanel.add(lblBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 8, 330, -1));
         tituloPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 640, 10));
 
-        contentPanel.add(tituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 640, 40));
+        contentPanel.add(tituloPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 640, 40));
 
         mainPanel.add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 720, 530));
 

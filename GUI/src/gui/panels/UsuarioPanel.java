@@ -39,6 +39,19 @@ public class UsuarioPanel extends ConfigPanel {
         btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         bntEliminar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -66,9 +79,9 @@ public class UsuarioPanel extends ConfigPanel {
 
         pnlLista.add(jScrollJava);
 
-        add(pnlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 640, 320));
+        add(pnlLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 640, 220));
 
-        pnlBotones.setLayout(new java.awt.GridLayout());
+        pnlBotones.setLayout(new java.awt.GridLayout(1, 0));
 
         btnAgregar.setBackground(new java.awt.Color(40, 167, 69));
         btnAgregar.setText("Agregar");
@@ -85,7 +98,41 @@ public class UsuarioPanel extends ConfigPanel {
         bntEliminar.setFocusPainted(false);
         pnlBotones.add(bntEliminar);
 
-        add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 410, 30));
+        add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 410, 30));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Telefono");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, -1, -1));
+
+        jLabel2.setText("Nombre");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, -1));
+
+        jLabel3.setText("Apellido");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 42, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 310, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 310, -1));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 310, -1));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 200, -1));
+
+        jLabel4.setText("Usuario");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 12, -1, -1));
+
+        jLabel5.setText("Contraseña");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 42, -1, -1));
+
+        jTextField5.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jTextField5.setText("123");
+        jTextField5.setEnabled(false);
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 180, -1));
+
+        jLabel6.setText("Cargo");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 72, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado", "Administrador" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 200, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 640, 100));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -93,7 +140,20 @@ public class UsuarioPanel extends ConfigPanel {
     private javax.swing.JButton bntEliminar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollJava;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlLista;
