@@ -1,25 +1,18 @@
 package gui.panels;
 
 import appinventario.controllers.ProductoController;
-import appinventario.models.Producto;
-import appinventario.tablas.ProductoTableModel;
-import java.util.List;
+import appinventario.utils.FillTable;
 
 public class ProductoPanel extends ConfigPanel {
 
-    private ProductoController controlador;
+    private final ProductoController controlador;
     
     public ProductoPanel() {
         initComponents();
         this.controlador = new ProductoController();
-        llenarTabla();
+        FillTable.setearTabla(tablaProducto, controlador.modeloProducto());
     }
 
-    private void llenarTabla(){
-        List<Producto> usuarios = controlador.obtenerTodosProductos();
-        ProductoTableModel modelo = new ProductoTableModel(usuarios);
-        this.tablaProducto.setModel(modelo);
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

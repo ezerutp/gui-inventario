@@ -1,23 +1,16 @@
 package gui.panels;
 
 import appinventario.controllers.InventarioController;
-import appinventario.models.Inventario;
-import appinventario.tablas.InventarioTableModel;
-import java.util.List;
+import appinventario.utils.FillTable;
 
 public class InventarioPanel extends ConfigPanel {
-    private InventarioController controlador;
+    
+    private final InventarioController controlador;
+    
     public InventarioPanel() {
-        
         initComponents();
         this.controlador = new InventarioController();
-        llenartabla();
-    }
-    
-    private void llenartabla(){
-        List<Inventario> lista = this.controlador.obtenerTodosInventarios();
-        InventarioTableModel modelo = new InventarioTableModel(lista);
-        this.tablaInventario.setModel(modelo);
+        FillTable.setearTabla(tablaInventario, controlador.modeloInventario());
     }
 
     /**

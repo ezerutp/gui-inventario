@@ -1,24 +1,16 @@
 package gui.panels;
 
 import appinventario.controllers.ConsumoController;
-import appinventario.models.Consumo;
-import appinventario.tablas.ConsumoTableModel;
-import java.util.List;
+import appinventario.utils.FillTable;
 
 public class SalidaPanel extends ConfigPanel {
 
-    private ConsumoController controlador;
+    private final ConsumoController controlador;
     
     public SalidaPanel() {
         initComponents();
         this.controlador = new ConsumoController();
-        llenarTabla();
-    }
-    
-       private void llenarTabla(){
-        List<Consumo> usuarios = controlador.obtenerTodosConsumos();
-        ConsumoTableModel modelo = new ConsumoTableModel(usuarios);
-        this.tablaConsumo.setModel(modelo);
+        FillTable.setearTabla(tablaConsumo, controlador.modeloConsumo());
     }
 
     /**

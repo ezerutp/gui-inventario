@@ -1,26 +1,18 @@
 package gui.panels;
 
 import appinventario.controllers.SuministroController;
-import appinventario.models.Suministro;
-import appinventario.tablas.SuministroTableModel;
-import java.util.List;
+import appinventario.utils.FillTable;
 
 public class EntradaPanel extends ConfigPanel {
 
-    private SuministroController controlador;
+    private final SuministroController controlador;
     
     public EntradaPanel() {
         initComponents();
         this.controlador = new SuministroController();
-        llenarTabla();
+        FillTable.setearTabla(tablaSuministro, controlador.modeloSuministros());
     }
     
-    private void llenarTabla() {
-        List<Suministro> usuarios = controlador.obtenerTodosSuministros();
-        SuministroTableModel modelo = new SuministroTableModel(usuarios);
-        this.tablaSuministro.setModel(modelo);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

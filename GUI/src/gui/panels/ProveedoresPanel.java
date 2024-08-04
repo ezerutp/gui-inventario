@@ -1,24 +1,16 @@
 package gui.panels;
 
 import appinventario.controllers.ProveedorController;
-import appinventario.models.Proveedor;
-import appinventario.tablas.ProveedorTableModel;
-import java.util.List;
+import appinventario.utils.FillTable;
 
 public class ProveedoresPanel extends ConfigPanel {
 
-    private ProveedorController controlador;
+    private final ProveedorController controlador;
     
     public ProveedoresPanel() {
         initComponents();
         this.controlador = new ProveedorController();
-        llenarTabla();
-    }
-    
-    private void llenarTabla() {
-        List<Proveedor> usuarios = controlador.obtenerTodosProveedores();
-        ProveedorTableModel modelo = new ProveedorTableModel(usuarios);
-        this.tablaProveedor.setModel(modelo);
+        FillTable.setearTabla(tablaProveedor, controlador.modeloProveedor());
     }
 
     /**

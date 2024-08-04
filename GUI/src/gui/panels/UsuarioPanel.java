@@ -1,25 +1,16 @@
 package gui.panels;
 
 import appinventario.controllers.AdminController;
-import appinventario.models.Usuario;
-import appinventario.tablas.UsuarioTableModel;
-import java.util.List;
+import appinventario.utils.FillTable;
 
 public class UsuarioPanel extends ConfigPanel {
 
-    private AdminController controlador;
+    private final AdminController controlador;
     
     public UsuarioPanel() {
         initComponents();
         this.controlador = new AdminController();
-        llenarTabla();
-        
-    }
-    
-    private void llenarTabla(){
-        List<Usuario> usuarios = controlador.obtenerTodosUsuarios();
-        UsuarioTableModel modelo = new UsuarioTableModel(usuarios);
-        this.tablaUsuarios.setModel(modelo);
+        FillTable.setearTabla(tablaUsuarios, controlador.modeloUsuarios());        
     }
 
     /**
